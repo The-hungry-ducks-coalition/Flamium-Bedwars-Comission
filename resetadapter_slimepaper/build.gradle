@@ -1,0 +1,14 @@
+configurations.configureEach {
+    resolutionStrategy {
+        // aswm pulls a transitive flow-nbt 2.0.2 which is no longer hosted anywhere;
+        // 2.0.0 (the version this module was built against) is available on glaremasters.
+        force 'com.flowpowered:flow-nbt:2.0.0'
+    }
+}
+
+dependencies {
+    compileOnly project(':bedwars-api')
+    compileOnly 'org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT'
+    compileOnly 'com.infernalsuite.aswm:api:1.20-R0.1-SNAPSHOT'
+    implementation 'com.flowpowered:flow-nbt:2.0.0'
+}

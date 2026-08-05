@@ -38,6 +38,10 @@ hs_err_pid*
 # Gradle wrapper
 !gradle/wrapper/gradle-wrapper.jar
 
+# Vendored local maven repo (SidebarLib jars not available on reliable repos)
+!gradle/libs/
+!gradle/libs/**
+
 # Maven
 target/
 pom.xml.tag

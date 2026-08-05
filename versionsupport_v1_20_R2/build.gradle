@@ -1,0 +1,12 @@
+java {
+    sourceCompatibility = JavaVersion.VERSION_19
+    targetCompatibility = JavaVersion.VERSION_19
+}
+
+dependencies {
+    compileOnly project(':bedwars-api')
+    compileOnly project(':versionsupport_common')
+    compileOnly('org.spigotmc:spigot:1.20.2-R0.1-SNAPSHOT') {
+        exclude group: 'commons-codec', module: 'commons-codec'
+    }
+}

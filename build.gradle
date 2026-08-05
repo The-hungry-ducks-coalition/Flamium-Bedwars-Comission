@@ -1,0 +1,33 @@
+subprojects {
+    apply plugin: 'java'
+
+    group = 'com.andrei1058.bedwars'
+    version = '25.2'
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    // Some modules must be compiled for newer JVM targets (NMS support for newer Minecraft
+    // versions, up to Java 19 for 1.20.x) while the main plugin module targets Java 11.
+    // Relax Gradle's automatic JVM-version attribute matching so mixed-target project
+    // dependencies and external libraries (e.g. aswm compiled for Java 17) can be resolved.
+    configurations.configureEach {
+        attributes {
+            attribute(Attribute.of('org.gradle.jvm.version', Integer), 19)
+        }
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+    }
+
+    dependencies {
+        // Inherited from the root pom (all provided scope in Maven).
+        compileOnly 'net.md-5:bungeecord-chat:1.8-SNAPSHOT'
+        compileOnly 'commons-io:commons-io:2.13.0'
+        compileOnly 'org.jetbrains:annotations:24.0.1'
+        compileOnly 'org.projectlombok:lombok:1.18.36'
+    }
+}

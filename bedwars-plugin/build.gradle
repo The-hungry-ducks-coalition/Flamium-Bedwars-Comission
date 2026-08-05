@@ -1,0 +1,83 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+dependencies {
+    implementation 'io.papermc:paperlib:1.0.8'
+    compileOnly 'de.simonsator:Party-and-Friends-MySQL-Edition-Spigot-API:1.5.4-RELEASE'
+    compileOnly 'de.simonsator:Spigot-Party-API-For-RedisBungee:1.0.3-SNAPSHOT'
+    implementation 'org.bstats:bstats-bukkit:3.0.2'
+    compileOnly 'de.simonsator:DevelopmentPAFSpigot:1.0.239'
+    compileOnly 'com.alessiodp.parties:parties-api:3.2.9'
+    compileOnly('net.citizensnpcs:citizens-main:2.0.30-SNAPSHOT') {
+        exclude group: 'junit', module: 'junit'
+        exclude group: 'org.bstats', module: 'bstats-bukkit'
+    }
+    compileOnly('net.milkbowl.vault:VaultAPI:1.7') {
+        exclude group: 'org.bukkit', module: 'bukkit'
+    }
+
+    implementation project(':bedwars-api')
+    implementation project(':versionsupport_1_8_R3')
+    implementation project(':resetadapter_slime')
+    implementation project(':versionsupport_1_12_R1')
+    implementation project(':versionsupport_v1_16_R3')
+    implementation project(':versionsupport_v1_17_R1')
+    implementation project(':versionsupport_v1_18_R2')
+    implementation project(':versionsupport_v1_19_R2')
+    implementation project(':versionsupport_v1_19_R3')
+    implementation project(':versionsupport_v1_20_R1')
+    implementation project(':versionsupport_v1_20_R2')
+    implementation project(':versionsupport_v1_20_R3')
+    implementation project(':versionsupport_v1_20_R4')
+    implementation project(':versionsupport_common')
+    implementation project(':resetadapter_slimepaper')
+    implementation project(':resetadapter_aswm')
+
+    compileOnly 'org.spigotmc:spigot:1.8.8-R0.1-SNAPSHOT'
+    compileOnly 'me.clip:placeholderapi:2.11.6'
+    compileOnly 'com.andrei1058.vipfeatures:vipfeatures-api:[1.0,)'
+
+    implementation 'commons-io:commons-io:2.13.0'
+    implementation('com.zaxxer:HikariCP:5.0.1') {
+        exclude group: 'org.slf4j', module: 'slf4j-api'
+    }
+    implementation 'org.slf4j:slf4j-simple:2.0.7'
+
+    implementation 'com.andrei1058.spigot.sidebar:sidebar-base:24.2'
+    implementation 'com.andrei1058.spigot.sidebar:sidebar-v1_8_R3:24.2'
+    implementation 'com.andrei1058.spigot.sidebar:sidebar-v1_12_R1:24.2'
+    implementation 'com.andrei1058.spigot.sidebar:sidebar-v1_16_R3:24.2'
+    implementation 'com.andrei1058.spigot.sidebar:sidebar-v1_17_R1:24.2'
+    implementation 'com.andrei1058.spigot.sidebar:sidebar-v1_18_R2:24.2'
+    implementation 'com.andrei1058.spigot.sidebar:sidebar-v1_19_R2:24.2'
+    implementation 'com.andrei1058.spigot.sidebar:sidebar-v1_19_R3:24.2'
+    implementation 'com.andrei1058.spigot.sidebar:sidebar-v1_20_R1:24.2'
+    implementation 'com.andrei1058.spigot.sidebar:sidebar-v1_20_R2:24.2'
+    implementation 'com.andrei1058.spigot.sidebar:sidebar-v1_20_R3:24.2'
+    implementation 'com.andrei1058.spigot.sidebar:sidebar-v1_20_R4:24.2'
+
+    compileOnly 'net.md-5:bungeecord-chat:1.18-R0.1-SNAPSHOT'
+}
+
+processResources {
+    expand('project': [version: version])
+}
+
+shadowJar {
+    archiveBaseName = 'bedwars-plugin'
+    archiveClassifier = 'all'
+    relocate 'org.bstats', 'com.andrei1058.bedwars.libs.bstats'
+    relocate 'com.zaxxer.hikari', 'com.andrei1058.bedwars.libs.hikari'
+    relocate 'org.slf4j', 'com.andrei1058.bedwars.libs.slf4j'
+    relocate 'com.andrei1058.spigot.sidebar', 'com.andrei1058.bedwars.libs.sidebar'
+    relocate 'com.andrei1058.spigot.sidebarutils', 'com.andrei1058.bedwars.libs.updater'
+}
+
+tasks.named('jar') {
+    archiveBaseName = 'bedwars-plugin'
+}
+
+tasks.named('build') {
+    dependsOn tasks.named('shadowJar')
+}

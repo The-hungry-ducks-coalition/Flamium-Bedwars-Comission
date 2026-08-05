@@ -1,0 +1,49 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'BedWars1058'
+
+dependencyResolutionManagement {
+    repositoriesMode = RepositoriesMode.PREFER_SETTINGS
+    repositories {
+        maven { url = uri('gradle/libs') }
+        maven { url = uri('https://oss.sonatype.org/content/repositories/snapshots/') }
+        maven { url = uri('https://repo.codemc.io/repository/nms/') }
+        maven { url = uri('https://repo.codemc.io/repository/maven-public/') }
+        maven { url = uri('https://repo.codemc.io/repository/maven-releases/') }
+        maven { url = uri('https://repo.codemc.io/repository/maven-snapshots/') }
+        maven { url = uri('https://hub.spigotmc.org/nexus/content/repositories/snapshots/') }
+        maven { url = uri('https://repo.andrei1058.com/releases/') }
+        maven { url = uri('https://repo.extendedclip.com/content/repositories/placeholderapi/') }
+        maven { url = uri('https://simonsator.de/repo/') }
+        maven { url = uri('https://maven.citizensnpcs.co/repo') }
+        maven { url = uri('https://repo.alessiodp.com/releases/') }
+        maven { url = uri('https://repo.papermc.io/repository/maven-public/') }
+        maven { url = uri('https://repo.fusesource.com/nexus/content/repositories/releases-3rd-party/') }
+        maven { url = uri('https://repo.glaremasters.me/repository/concuncan/') }
+        maven { url = uri('https://repo.infernalsuite.com/repository/maven-snapshots/') }
+        mavenCentral()
+    }
+}
+
+include 'bedwars-api'
+include 'bedwars-plugin'
+include 'resetadapter_aswm'
+include 'resetadapter_slime'
+include 'resetadapter_slimepaper'
+include 'versionsupport_1_8_R3'
+include 'versionsupport_1_12_R1'
+include 'versionsupport_common'
+include 'versionsupport_v1_16_R3'
+include 'versionsupport_v1_17_R1'
+include 'versionsupport_v1_18_R2'
+include 'versionsupport_v1_19_R2'
+include 'versionsupport_v1_19_R3'
+include 'versionsupport_v1_20_R1'
+include 'versionsupport_v1_20_R2'
+include 'versionsupport_v1_20_R3'
+include 'versionsupport_v1_20_R4'
