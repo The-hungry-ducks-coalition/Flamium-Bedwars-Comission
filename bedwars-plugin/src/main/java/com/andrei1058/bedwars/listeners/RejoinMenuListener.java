@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -21,15 +22,35 @@ public class RejoinMenuListener implements Listener {
         this.plugin = plugin;
     }
 
+    // 1. FOR SERVERS WITH AUTHME: Waits for successful login, then delays 1 second (20 ticks)
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onAuthMeLogin(fr.xephi.authme.events.LoginEvent event) {
+        Player player = event.getPlayer();
+        scheduleGUIPopup(player);
+    }
+
+    // 2. FALLBACK FOR OTHER LOGIN PLUGINS: Waits 5 seconds after joining to give time to log in
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
+        // If AuthMe is installed, let the event above handle it instead
+        if (Bukkit.getPluginManager().isPluginEnabled("AuthMe")) return;
 
+        Player player = event.getPlayer();
+        
+        // Generous 5-second delay to give them time to complete their login command
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
             if (player.isOnline()) {
                 openRejoinGUI(player);
             }
-        }, 20L); // 1-second delay
+        }, 100L); // 100 ticks = 5 seconds
+    }
+
+    private void scheduleGUIPopup(Player player) {
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            if (player.isOnline()) {
+                openRejoinGUI(player);
+            }
+        }, 20L); // 20 ticks = Exactly 1 second after successful authentication
     }
 
     private void openRejoinGUI(Player player) {
