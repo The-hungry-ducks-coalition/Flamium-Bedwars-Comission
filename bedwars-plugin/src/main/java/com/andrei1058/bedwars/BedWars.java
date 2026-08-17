@@ -64,6 +64,13 @@ import com.andrei1058.bedwars.lobbysocket.SendTask;
 import com.andrei1058.bedwars.maprestore.internal.InternalAdapter;
 import com.andrei1058.bedwars.metrics.MetricsManager;
 import com.andrei1058.bedwars.money.internal.MoneyListeners;
+import com.andrei1058.bedwars.cosmetics.CosmeticsManager;
+import com.andrei1058.bedwars.cosmetics.CosmeticsGUI;
+import com.andrei1058.bedwars.quickdeposit.QuickDepositManager;
+import com.andrei1058.bedwars.quests.QuestManager;
+import com.andrei1058.bedwars.quests.QuestListener;
+import com.andrei1058.bedwars.quests.QuestGUI;
+import com.andrei1058.bedwars.physics.DynamicPhysicsManager;
 import com.andrei1058.bedwars.shop.ShopManager;
 import com.andrei1058.bedwars.sidebar.*;
 import com.andrei1058.bedwars.stats.StatsManager;
@@ -516,6 +523,12 @@ public class BedWars extends JavaPlugin {
 
         // TNT Spoil Feature
         SpoilPlayerTNTFeature.init();
+
+        // Custom commission features
+        QuickDepositManager.init();
+        new QuestManager();
+        registerEvents(new QuestListener());
+        registerEvents(new QuestGUI());
 
         // Warn user if current server version support is deprecated
         this.performDeprecationCheck();

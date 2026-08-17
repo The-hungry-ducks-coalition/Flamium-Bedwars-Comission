@@ -1,0 +1,94 @@
+# BedWars1058 - A bed wars mini-game.
+# Copyright (C) 2021 Andrei Dascălu
+#
+# Quests & Challenges Configuration
+
+# Enable quests system
+enabled: true
+
+# Daily Quests (reset every 24 hours)
+daily:
+  kill-players:
+    display-name: "&aKill 5 Players"
+    description: "&7Kill 5 enemy players in BedWars matches"
+    objective: kills
+    target: 5
+    reward-amount: 100
+    reward-type: coins
+  destroy-beds:
+    display-name: "&cDestroy 2 Beds"
+    description: "&7Destroy 2 enemy beds in BedWars matches"
+    objective: beds_destroyed
+    target: 2
+    reward-amount: 200
+    reward-type: coins
+  win-games:
+    display-name: "&6Win 1 Game"
+    description: "&7Win 1 BedWars match"
+    objective: wins
+    target: 1
+    reward-amount: 300
+    reward-type: coins
+  final-kill-3:
+    display-name: "&bGet 3 Final Kills"
+    description: "&7Get 3 final kills in a single game"
+    objective: final_kills
+    target: 3
+    reward-amount: 400
+    reward-type: coins
+  play-3-games:
+    display-name: "&ePlay 3 Games"
+    description: "&7Play 3 BedWars matches"
+    objective: games_played
+    target: 3
+    reward-amount: 150
+    reward-type: coins
+
+# Weekly Quests (reset every Monday)
+weekly:
+  final-kills:
+    display-name: "&bGet 20 Final Kills"
+    description: "&7Get 20 final kills throughout the week"
+    objective: final_kills
+    target: 20
+    reward-amount: 1500
+    reward-type: coins
+  play-games:
+    display-name: "&ePlay 15 Games"
+    description: "&7Play 15 BedWars matches throughout the week"
+    objective: games_played
+    target: 15
+    reward-amount: 2000
+    reward-type: coins
+  win-games:
+    display-name: "&6Win 5 Games"
+    description: "&7Win 5 BedWars matches throughout the week"
+    objective: wins
+    target: 5
+    reward-amount: 2500
+    reward-type: coins
+  destroy-beds:
+    display-name: "&cDestroy 10 Beds"
+    description: "&7Destroy 10 enemy beds throughout the week"
+    objective: beds_destroyed
+    target: 10
+    reward-amount: 3000
+    reward-type: coins
+  kill-50:
+    display-name: "&aKill 50 Players"
+    description: "&7Kill 50 enemy players throughout the week"
+    objective: kills
+    target: 50
+    reward-amount: 2000
+    reward-type: coins
+
+# Special Quests (manually configured, limited time)
+special:
+  # Example special quest (disabled by default)
+  # double-xp-event:
+  #   display-name: "&d&lDouble XP Event"
+  #   description: "&7Earn double XP for 10 games"
+  #   objective: games_played
+  #   target: 10
+  #   reward-amount: 500
+  #   reward-type: xp

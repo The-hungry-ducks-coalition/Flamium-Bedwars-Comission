@@ -62,6 +62,10 @@
             <id>papermc</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
+        <repository>
+            <id>local-libs</id>
+            <url>file://${project.basedir}/../gradle/libs</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -318,18 +322,6 @@
             <version>24.2</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>com.andrei1058.spigot.sidebar</groupId>
-            <artifactId>sidebar-v1_20_R4</artifactId>
-            <version>23.12</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.andrei1058.spigot.sidebar</groupId>
-            <artifactId>sidebar-v1_20_R4</artifactId>
-            <version>23.12</version>
-            <scope>compile</scope>
-        </dependency>
         <!--        End of Sidebar LIB-->
         <!-- Slime Paper -->
         <dependency>
@@ -348,7 +340,7 @@
         <dependency>
             <groupId>net.md-5</groupId>
             <artifactId>bungeecord-chat</artifactId>
-            <version>1.18-R0.1-SNAPSHOT</version>
+            <version>1.16-R0.4</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -708,6 +708,51 @@ public class English extends Language {
 
         // start of TAB
         // main lobby tab format
+        // Quick Deposit Messages
+        yml.addDefault(Messages.QUICK_DEPOSIT_TOGGLE_ON, "{prefix}&aQuick Deposit &aenabled! Right-click your team chest to deposit resources.");
+        yml.addDefault(Messages.QUICK_DEPOSIT_TOGGLE_OFF, "{prefix}&cQuick Deposit &cdisabled!");
+        yml.addDefault(Messages.QUICK_DEPOSIT_SUCCESS, "{prefix}&aDeposited &f{amount} &aresources into your team chest!");
+        yml.addDefault(Messages.QUICK_DEPOSIT_NO_CHEST, "{prefix}&cNo team chest found nearby!");
+        yml.addDefault(Messages.QUICK_DEPOSIT_DISABLED, "{prefix}&cQuick Deposit is currently disabled.");
+
+        // Cosmetics Messages
+        yml.addDefault(Messages.COSMETICS_GUI_NAME, "&8Cosmetics");
+        yml.addDefault(Messages.COSMETICS_CATEGORY_KILL_EFFECT, "&c&lKill Effects");
+        yml.addDefault(Messages.COSMETICS_CATEGORY_KILL_EFFECT_LORE, "&7Equip kill effect particles");
+        yml.addDefault(Messages.COSMETICS_CATEGORY_DEATH_ANIMATION, "&4&lDeath Animations");
+        yml.addDefault(Messages.COSMETICS_CATEGORY_DEATH_ANIMATION_LORE, "&7Equip death animation particles");
+        yml.addDefault(Messages.COSMETICS_CATEGORY_VICTORY_DANCE, "&a&lVictory Dances");
+        yml.addDefault(Messages.COSMETICS_CATEGORY_VICTORY_DANCE_LORE, "&7Equip victory dance animations");
+        yml.addDefault(Messages.COSMETICS_CATEGORY_TRAIL, "&d&lProjectile Trails");
+        yml.addDefault(Messages.COSMETICS_CATEGORY_TRAIL_LORE, "&7Equip projectile trail particles");
+        yml.addDefault(Messages.COSMETICS_BACK_BUTTON, "&7&lBack");
+        yml.addDefault(Messages.COSMETICS_ITEM_PRICE, "&7Price: &f{price}");
+        yml.addDefault(Messages.COSMETICS_ITEM_CURRENCY, "&7Currency: &f{currency}");
+        yml.addDefault(Messages.COSMETICS_ITEM_CLICK_TO_EQUIP, "&aClick to equip!");
+        yml.addDefault(Messages.COSMETICS_EQUIPPED, "{prefix}&aEquipped cosmetic: {cosmetic}");
+
+        // Quests Messages
+        yml.addDefault(Messages.QUESTS_GUI_NAME, "&8Quests & Challenges");
+        yml.addDefault(Messages.QUESTS_CATEGORY_DAILY, "&e&lDaily Quests");
+        yml.addDefault(Messages.QUESTS_CATEGORY_DAILY_LORE, "&7Complete daily quests for rewards!");
+        yml.addDefault(Messages.QUESTS_CATEGORY_WEEKLY, "&6&lWeekly Quests");
+        yml.addDefault(Messages.QUESTS_CATEGORY_WEEKLY_LORE, "&7Complete weekly quests for bigger rewards!");
+        yml.addDefault(Messages.QUESTS_CATEGORY_SPECIAL, "&b&lSpecial Quests");
+        yml.addDefault(Messages.QUESTS_CATEGORY_SPECIAL_LORE, "&7Limited time special quests!");
+        yml.addDefault(Messages.QUESTS_BACK_BUTTON, "&7&lBack");
+        yml.addDefault(Messages.QUESTS_STATUS_PROGRESS, "&7Progress: &f{progress}&7/&f{target}");
+        yml.addDefault(Messages.QUESTS_STATUS_COMPLETED_CLICK, "&aCompleted! Click to claim reward.");
+        yml.addDefault(Messages.QUESTS_STATUS_CLAIMED, "&7&lClaimed");
+        yml.addDefault(Messages.QUESTS_REWARD_INFO, "&7Reward: &f{amount} {type}");
+        yml.addDefault(Messages.QUESTS_COMPLETED, "{prefix}&aQuest Completed: {quest}!");
+        yml.addDefault(Messages.QUESTS_PROGRESS, "{prefix}&eQuest Progress: {quest} &7({progress}/{target})");
+        yml.addDefault(Messages.QUESTS_REWARD_CLAIMED, "{prefix}&aReward claimed: &f{amount} {type}!");
+
+        // Rejoin Enhanced Messages
+        yml.addDefault(Messages.REJOIN_ENHANCED_BED_DESTROYED, "{prefix}&cCannot rejoin: your bed has been destroyed!");
+        yml.addDefault(Messages.REJOIN_ENHANCED_TIME_EXPIRED, "{prefix}&cCannot rejoin: your rejoin time has expired!");
+        yml.addDefault(Messages.REJOIN_ENHANCED_SAVED_INVENTORY, "{prefix}&aYour inventory has been saved for rejoin.");
+
         yml.addDefault(Messages.FORMATTING_SB_TAB_LOBBY_HEADER, List.of(
                 "                                                                                                        ",
                 "&a{serverIp}",

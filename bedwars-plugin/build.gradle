@@ -57,7 +57,7 @@ dependencies {
     implementation 'com.andrei1058.spigot.sidebar:sidebar-v1_20_R3:24.2'
     implementation 'com.andrei1058.spigot.sidebar:sidebar-v1_20_R4:24.2'
 
-    compileOnly 'net.md-5:bungeecord-chat:1.18-R0.1-SNAPSHOT'
+    compileOnly 'net.md-5:bungeecord-chat:1.16-R0.4'
 }
 
 processResources {

@@ -13,20 +13,34 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.lang.reflect.Method;
+
 public class RejoinMenuListener implements Listener {
 
     private final JavaPlugin plugin;
     private final String guiTitle = "§8Rejoin Last Match?";
+    private boolean authMeHooked = false;
+    private Method authMeGetPlayer;
 
     public RejoinMenuListener(JavaPlugin plugin) {
         this.plugin = plugin;
+        try {
+            Class<?> loginEventClass = Class.forName("fr.xephi.authme.events.LoginEvent");
+            authMeGetPlayer = loginEventClass.getMethod("getPlayer");
+            authMeHooked = true;
+        } catch (Exception ignored) {
+        }
     }
 
-    // 1. FOR SERVERS WITH AUTHME: Waits for successful login, then delays 1 second (20 ticks)
     @EventHandler(priority = EventPriority.MONITOR)
-    public void onAuthMeLogin(fr.xephi.authme.events.LoginEvent event) {
-        Player player = event.getPlayer();
-        scheduleGUIPopup(player);
+    public void onGenericLogin(org.bukkit.event.Event event) {
+        if (!authMeHooked) return;
+        if (!event.getClass().getName().equals("fr.xephi.authme.events.LoginEvent")) return;
+        try {
+            Player player = (Player) authMeGetPlayer.invoke(event);
+            scheduleGUIPopup(player);
+        } catch (Exception ignored) {
+        }
     }
 
     // 2. FALLBACK FOR OTHER LOGIN PLUGINS: Waits 5 seconds after joining to give time to log in

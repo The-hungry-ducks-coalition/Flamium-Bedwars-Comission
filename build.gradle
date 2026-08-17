@@ -25,7 +25,7 @@ subprojects {
 
     dependencies {
         // Inherited from the root pom (all provided scope in Maven).
-        compileOnly 'net.md-5:bungeecord-chat:1.8-SNAPSHOT'
+        compileOnly 'net.md-5:bungeecord-chat:1.16-R0.4'
         compileOnly 'commons-io:commons-io:2.13.0'
         compileOnly 'org.jetbrains:annotations:24.0.1'
         compileOnly 'org.projectlombok:lombok:1.18.36'
