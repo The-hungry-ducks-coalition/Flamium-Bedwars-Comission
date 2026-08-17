@@ -526,9 +526,14 @@ public class BedWars extends JavaPlugin {
 
         // Custom commission features
         QuickDepositManager.init();
+        CosmeticsManager.init();
         new QuestManager();
         registerEvents(new QuestListener());
         registerEvents(new QuestGUI());
+
+        // Dynamic fireball & TNT jump physics
+        registerEvents(new DynamicPhysicsManager());
+        DynamicPhysicsManager.init();
 
         // Warn user if current server version support is deprecated
         this.performDeprecationCheck();
