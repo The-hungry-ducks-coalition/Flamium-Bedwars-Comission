@@ -344,4 +344,28 @@ public class ConfigPath {
 
     public static final String LOBBY_VOID_TELEPORT_ENABLED = "lobby-settings.void-tp";
     public static final String LOBBY_VOID_TELEPORT_HEIGHT = "lobby-settings.void-height";
+
+    // Quick Deposit
+    public static final String QUICK_DEPOSIT_ENABLED = "quick-deposit.enabled";
+    public static final String QUICK_DEPOSIT_RADIUS = "quick-deposit.radius";
+
+    // Cosmetics
+    public static final String COSMETICS_ENABLED = "cosmetics-enabled";
+    public static final String COSMETICS_CATEGORY_PATH = "cosmetics";
+    public static final String COSMETICS_KILL_EFFECT = "kill_effect";
+    public static final String COSMETICS_DEATH_ANIMATION = "death_animation";
+    public static final String COSMETICS_VICTORY_DANCE = "victory_dance";
+    public static final String COSMETICS_PROJECTILE_TRAIL = "projectile_trail";
+
+    // Quests & Challenges
+    public static final String QUESTS_ENABLED = "quests-enabled";
+    public static final String QUESTS_DAILY_PATH = "quests.daily";
+    public static final String QUESTS_WEEKLY_PATH = "quests.weekly";
+    public static final String QUESTS_SPECIAL_PATH = "quests.special";
+
+    // Dynamic Physics
+    public static final String DYNAMIC_PHYSICS_ENABLED = "dynamic-physics.enabled";
+    public static final String DYNAMIC_PHYSICS_VELOCITY_MULTIPLIER = "dynamic-physics.velocity-multiplier";
+    public static final String DYNAMIC_PHYSICS_FIREBALL_DISTANCE_FALLOFF = "dynamic-physics.fireball-distance-falloff";
+    public static final String DYNAMIC_PHYSICS_TNT_STRENGTH_SCALE = "dynamic-physics.tnt-strength-scale";
 }

@@ -542,4 +542,57 @@ public class Messages {
     public static String FORMATTING_SPECTATOR_TEAM = "format-spectator-team";
     @Deprecated(forRemoval = true)
     public static String FORMATTING_SPECTATOR_COLOR = FORMATTING_SPECTATOR_TEAM;
+
+    /**
+     * Quick Deposit
+     */
+    public static String QUICK_DEPOSIT_TOGGLE_ON = "quick-deposit-toggle-on";
+    public static String QUICK_DEPOSIT_TOGGLE_OFF = "quick-deposit-toggle-off";
+    public static String QUICK_DEPOSIT_SUCCESS = "quick-deposit-success";
+    public static String QUICK_DEPOSIT_NO_CHEST = "quick-deposit-no-chest";
+    public static String QUICK_DEPOSIT_DISABLED = "quick-deposit-disabled";
+
+    /**
+     * Cosmetics
+     */
+    public static String COSMETICS_GUI_NAME = "cosmetics-gui-name";
+    public static String COSMETICS_CATEGORY_KILL_EFFECT = "cosmetics-category-kill-effect";
+    public static String COSMETICS_CATEGORY_KILL_EFFECT_LORE = "cosmetics-category-kill-effect-lore";
+    public static String COSMETICS_CATEGORY_DEATH_ANIMATION = "cosmetics-category-death-animation";
+    public static String COSMETICS_CATEGORY_DEATH_ANIMATION_LORE = "cosmetics-category-death-animation-lore";
+    public static String COSMETICS_CATEGORY_VICTORY_DANCE = "cosmetics-category-victory-dance";
+    public static String COSMETICS_CATEGORY_VICTORY_DANCE_LORE = "cosmetics-category-victory-dance-lore";
+    public static String COSMETICS_CATEGORY_TRAIL = "cosmetics-category-trail";
+    public static String COSMETICS_CATEGORY_TRAIL_LORE = "cosmetics-category-trail-lore";
+    public static String COSMETICS_BACK_BUTTON = "cosmetics-back-button";
+    public static String COSMETICS_ITEM_PRICE = "cosmetics-item-price";
+    public static String COSMETICS_ITEM_CURRENCY = "cosmetics-item-currency";
+    public static String COSMETICS_ITEM_CLICK_TO_EQUIP = "cosmetics-item-click-to-equip";
+    public static String COSMETICS_EQUIPPED = "cosmetics-equipped";
+
+    /**
+     * Quests & Challenges
+     */
+    public static String QUESTS_GUI_NAME = "quests-gui-name";
+    public static String QUESTS_CATEGORY_DAILY = "quests-category-daily";
+    public static String QUESTS_CATEGORY_DAILY_LORE = "quests-category-daily-lore";
+    public static String QUESTS_CATEGORY_WEEKLY = "quests-category-weekly";
+    public static String QUESTS_CATEGORY_WEEKLY_LORE = "quests-category-weekly-lore";
+    public static String QUESTS_CATEGORY_SPECIAL = "quests-category-special";
+    public static String QUESTS_CATEGORY_SPECIAL_LORE = "quests-category-special-lore";
+    public static String QUESTS_BACK_BUTTON = "quests-back-button";
+    public static String QUESTS_STATUS_PROGRESS = "quests-status-progress";
+    public static String QUESTS_STATUS_COMPLETED_CLICK = "quests-status-completed-click";
+    public static String QUESTS_STATUS_CLAIMED = "quests-status-claimed";
+    public static String QUESTS_REWARD_INFO = "quests-reward-info";
+    public static String QUESTS_COMPLETED = "quests-completed";
+    public static String QUESTS_PROGRESS = "quests-progress";
+    public static String QUESTS_REWARD_CLAIMED = "quests-reward-claimed";
+
+    /**
+     * Rejoin Enhanced
+     */
+    public static String REJOIN_ENHANCED_BED_DESTROYED = "rejoin-enhanced-bed-destroyed";
+    public static String REJOIN_ENHANCED_TIME_EXPIRED = "rejoin-enhanced-time-expired";
+    public static String REJOIN_ENHANCED_SAVED_INVENTORY = "rejoin-enhanced-saved-inventory";
 }

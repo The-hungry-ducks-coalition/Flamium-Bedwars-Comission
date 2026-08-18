@@ -13,112 +13,92 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.lang.reflect.Method;
+
 public class RejoinMenuListener implements Listener {
 
     private final JavaPlugin plugin;
-    private final String guiTitle = "§8Rejoin Last Match?";
+    private final String TITLE = "§8Rejoin Last Match?";
+    
+    private boolean authme;
+    private Method getAuthPlayer;
 
     public RejoinMenuListener(JavaPlugin plugin) {
         this.plugin = plugin;
+        try {
+            Class<?> ev = Class.forName("fr.xephi.authme.events.LoginEvent");
+            this.getAuthPlayer = ev.getMethod("getPlayer");
+            this.authme = true;
+        } catch (Exception e) {
+            this.authme = false;
+        }
     }
 
-    // 1. FOR SERVERS WITH AUTHME: Waits for successful login, then delays 1 second (20 ticks)
     @EventHandler(priority = EventPriority.MONITOR)
-    public void onAuthMeLogin(fr.xephi.authme.events.LoginEvent event) {
-        Player player = event.getPlayer();
-        scheduleGUIPopup(player);
+    public void onLogin(org.bukkit.event.Event e) {
+        if (!authme || !e.getClass().getName().equals("fr.xephi.authme.events.LoginEvent")) return;
+        try {
+            Player p = (Player) getAuthPlayer.invoke(e);
+            if (p != null) {
+                Bukkit.getScheduler().runTaskLater(plugin, () -> openGui(p), 20L);
+            }
+        } catch (Exception ignored) {}
     }
 
-    // 2. FALLBACK FOR OTHER LOGIN PLUGINS: Waits 5 seconds after joining to give time to log in
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        // If AuthMe is installed, let the event above handle it instead
+    public void onJoin(PlayerJoinEvent e) {
         if (Bukkit.getPluginManager().isPluginEnabled("AuthMe")) return;
-
-        Player player = event.getPlayer();
         
-        // Generous 5-second delay to give them time to complete their login command
+        Player p = e.getPlayer();
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            if (player.isOnline()) {
-                openRejoinGUI(player);
-            }
-        }, 100L); // 100 ticks = 5 seconds
+            if (p.isOnline()) openGui(p);
+        }, 100L);
     }
 
-    private void scheduleGUIPopup(Player player) {
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
-            if (player.isOnline()) {
-                openRejoinGUI(player);
-            }
-        }, 20L); // 20 ticks = Exactly 1 second after successful authentication
-    }
+    private void openGui(Player p) {
+        Inventory inv = Bukkit.createInventory(null, 27, TITLE);
 
-    private void openRejoinGUI(Player player) {
-        Inventory gui = Bukkit.createInventory(null, 27, guiTitle);
+        ItemStack yes = new ItemStack(Material.LIME_WOOL);
+        ItemMeta yesM = yes.getItemMeta();
+        yesM.setDisplayName("§a§lYES, REJOIN");
+        yes.setItemMeta(yesM);
 
-        ItemStack acceptItem = createItem("LIME_WOOL", (short) 5);
-        ItemMeta acceptMeta = acceptItem.getItemMeta();
-        if (acceptMeta != null) {
-            acceptMeta.setDisplayName("§a§lYES, REJOIN");
-            acceptItem.setItemMeta(acceptMeta);
+        ItemStack no = new ItemStack(Material.RED_WOOL);
+        ItemMeta noM = no.getItemMeta();
+        noM.setDisplayName("§c§lNO, CANCEL");
+        no.setItemMeta(noM);
+
+        ItemStack bg = new ItemStack(Material.BLACK_STAINED_GLASS_PANE);
+        ItemMeta bgM = bg.getItemMeta();
+        bgM.setDisplayName("§7");
+        bg.setItemMeta(bgM);
+
+        for (int i = 0; i < inv.getSize(); i++) {
+            inv.setItem(i, bg);
         }
 
-        ItemStack declineItem = createItem("RED_WOOL", (short) 14);
-        ItemMeta declineMeta = declineItem.getItemMeta();
-        if (declineMeta != null) {
-            declineMeta.setDisplayName("§c§lNO, CANCEL");
-            declineItem.setItemMeta(declineMeta);
-        }
+        inv.setItem(11, yes);
+        inv.setItem(15, no);
 
-        ItemStack background = createItem("BLACK_STAINED_GLASS_PANE", (short) 15);
-        ItemMeta bgMeta = background.getItemMeta();
-        if (bgMeta != null) {
-            bgMeta.setDisplayName("§7");
-            background.setItemMeta(bgMeta);
-        }
-
-        for (int i = 0; i < gui.getSize(); i++) {
-            gui.setItem(i, background);
-        }
-
-        gui.setItem(11, acceptItem);
-        gui.setItem(15, declineItem);
-
-        player.openInventory(gui);
+        p.openInventory(inv);
     }
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent event) {
-        if (!guiTitle.equals(event.getView().getTitle())) return;
+    public void onClick(InventoryClickEvent e) {
+        if (!e.getView().getTitle().equals(TITLE)) return;
+        e.setCancelled(true);
         
-        event.setCancelled(true); 
-        if (event.getCurrentItem() == null) return;
+        if (e.getCurrentItem() == null || !e.getCurrentItem().hasItemMeta()) return;
 
-        Player player = (Player) event.getWhoClicked();
-        ItemStack clicked = event.getCurrentItem();
-        
-        if (clicked.hasItemMeta() && clicked.getItemMeta().hasDisplayName()) {
-            String name = clicked.getItemMeta().getDisplayName();
-            
-            if (name.contains("YES")) {
-                player.closeInventory();
-                player.performCommand("bw rejoin"); 
-            } else if (name.contains("NO")) {
-                player.closeInventory();
-                player.sendMessage("§7You declined to rejoin the game.");
-            }
-        }
-    }
+        Player p = (Player) e.getWhoClicked();
+        String name = e.getCurrentItem().getItemMeta().getDisplayName();
 
-    private ItemStack createItem(String modernName, short legacyData) {
-        Material mat = Material.getMaterial(modernName);
-        if (mat != null) {
-            return new ItemStack(mat);
-        } else {
-            String legacyMaterialName = modernName.contains("GLASS") ? "STAINED_GLASS_PANE" : "WOOL";
-            Material legacyMat = Material.getMaterial(legacyMaterialName);
-            if (legacyMat == null) legacyMat = Material.STONE;
-            return new ItemStack(legacyMat, 1, legacyData);
+        if (name.equals("§a§lYES, REJOIN")) {
+            p.closeInventory();
+            p.performCommand("bw rejoin");
+        } else if (name.equals("§c§lNO, CANCEL")) {
+            p.closeInventory();
+            p.sendMessage("§7You declined to rejoin the game.");
         }
     }
 }

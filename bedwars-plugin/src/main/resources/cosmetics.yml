@@ -1,0 +1,117 @@
+# BedWars1058 - A bed wars mini-game.
+# Copyright (C) 2021 Andrei Dascălu
+#
+# Cosmetics Configuration
+
+# Enable cosmetics system
+enabled: true
+
+# Kill Effects
+kill-effects:
+  fire-kill:
+    display-name: "&c&lFire Kill"
+    description: "&7Set enemies ablaze with fire particles"
+    price: 500
+    currency: coins
+    particles: FLAME
+    particle-count: 30
+    radius: 1.0
+  lightning-kill:
+    display-name: "&e&lLightning Kill"
+    description: "&7Strike enemies with lightning particles"
+    price: 1000
+    currency: coins
+    particles: SPELL_WITCH
+    particle-count: 25
+    radius: 1.5
+  soul-fire-kill:
+    display-name: "&5&lSoul Fire Kill"
+    description: "&7Engulf enemies in soul fire"
+    price: 1500
+    currency: coins
+    particles: SOUL_FIRE
+    particle-count: 35
+    radius: 1.0
+  dragon-kill:
+    display-name: "&4&lDragon Breath Kill"
+    description: "&7Surround enemies in dragon breath"
+    price: 2000
+    currency: coins
+    particles: DRAGON_BREATH
+    particle-count: 40
+    radius: 2.0
+
+# Death Animations
+death-animations:
+  soul-out:
+    display-name: "&b&lSoul Out"
+    description: "&7Your soul escapes on death"
+    price: 750
+    currency: coins
+    particles: SOUL_FIRE
+    duration: 2
+  smoke-puff:
+    display-name: "&7&lSmoke Puff"
+    description: "&7Disappear in a puff of smoke"
+    price: 500
+    currency: coins
+    particles: CAMPFIRE_COSY_SMOKE
+    duration: 1
+  portal-escape:
+    display-name: "&5&lPortal Escape"
+    description: "&7Your soul escapes through a portal"
+    price: 1200
+    currency: coins
+    particles: PORTAL
+    duration: 3
+
+# Victory Dances
+victory-dances:
+  dance-spin:
+    display-name: "&a&lSpin Dance"
+    description: "&7Victory spin with particles"
+    price: 2000
+    currency: coins
+    duration: 3
+    particles: VILLAGER_HAPPY
+  fire-dance:
+    display-name: "&c&lFire Dance"
+    description: "&7Celebrate with fire particles"
+    price: 3000
+    currency: coins
+    duration: 4
+    particles: FLAME
+  ender-dance:
+    display-name: "&5&lEnder Dance"
+    description: "&7Celebrate with ender particles"
+    price: 4000
+    currency: coins
+    duration: 5
+    particles: END_ROD
+
+# Projectile Trails
+projectile-trails:
+  rainbow-trail:
+    display-name: "&d&lRainbow Trail"
+    description: "&7Colorful rainbow trail"
+    price: 1500
+    currency: coins
+    particles: COLOR_SMOKE
+  flame-trail:
+    display-name: "&c&lFlame Trail"
+    description: "&7Fiery flame trail"
+    price: 1200
+    currency: coins
+    particles: FLAME
+  ender-trail:
+    display-name: "&5&lEnder Trail"
+    description: "&7Mystical ender trail"
+    price: 1800
+    currency: coins
+    particles: END_ROD
+  snow-trail:
+    display-name: "&f&lSnow Trail"
+    description: "&7Frosty snow trail"
+    price: 1000
+    currency: coins
+    particles: SNOW_SHOVEL

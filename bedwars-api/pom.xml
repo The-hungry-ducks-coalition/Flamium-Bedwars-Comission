@@ -21,8 +21,8 @@
             <url>https://repo.fusesource.com/nexus/content/repositories/releases-3rd-party/</url>
         </repository>
         <repository>
-            <id>andrei-prod</id>
-            <url>https://repo.andrei1058.com/releases</url>
+            <id>local-libs</id>
+            <url>file://${project.basedir}/../gradle/libs</url>
         </repository>
     </repositories>
 
@@ -50,7 +50,7 @@
         <dependency>
             <groupId>com.andrei1058.spigot.sidebar</groupId>
             <artifactId>sidebar-base</artifactId>
-            <version>23.2</version>
+            <version>24.2</version>
         </dependency>
     </dependencies>
     <build>
